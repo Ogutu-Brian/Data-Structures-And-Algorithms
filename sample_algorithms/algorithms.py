@@ -1,8 +1,8 @@
-from typing import List, Tuple
+from typing import List
 
 
 def insertion_sort(input_list: List)->None:
-    """Sorts a list and returns the sorted"""
+    """Sorts a list and returns the sorted in ascending order"""
     i = 1
     list_length = len(input_list)-1
     while(i < list_length):
