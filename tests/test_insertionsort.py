@@ -33,4 +33,4 @@ class TestInsertionSort(unittest.TestCase):
         """Tests for a mix of unsorted and sorted list"""
         unsorted_mix = [1, 2, -20, 1, -4.4]
         insertion_sort(unsorted_mix)
-        self.assertEqual(unsorted_mix, [-20, -4.4, 1, 2])
+        self.assertEqual(unsorted_mix, [-20, -4.4, 1, 1, 2])
