@@ -1,31 +1,44 @@
 """
 Sample Basic Algorithms
 """
+from typing import List
 
 
-def insertion_sort(input_list):
+from typing import List
+
+
+def insertion_sort(input_array: List) -> List:
+    j = 1
+    while j <= (len(input_array)-1):
+        key = input_array[j]
+        i = j - 1
+        while i >= 0 and input_array[i] > key:
+            input_array[i + 1] = input_array[i]
+            i -= 1
+        input_array[i + 1] = key
+        j += 1
+    return input_array
+
+
+def euclideanAlgorithm(m: int, n: int):
     """
-    Sorts a list and returns the sorted in ascending order
-    """
-    i = 0
-    list_length = len(input_list)-1
-    while(i <= list_length):
-        j = 0
-        while(j <= list_length):
-            if(input_list[i] < input_list[j]):
-                temp = input_list[i]
-                input_list[i] = input_list[j]
-                input_list[j] = temp
-            j += 1
-        i += 1
-
-
-def euclideanAlgorithm(m, n):
-    """
-    Ecuclidean algoruthm for finding the gcd of two numbers
+    Ecuclidean algorithm for finding the gcd of two numbers
     """
     if(n == 0):
         return m
     else:
         remainder = m % n
         return euclideanAlgorithm(n, remainder)
+
+
+def consucetive_integer_checking_algorithm(m: int, n: int) -> int:
+    """
+    Using consucutive integer checking algorithm for gcd of two numbers
+    """
+    result = max(m, n)
+    t = min(m, n)
+    if t != 0:
+        while (m % t != 0 or n % t != 0):
+            t -= 1
+        result = t
+    return result
