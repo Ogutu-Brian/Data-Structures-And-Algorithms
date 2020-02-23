@@ -8,4 +8,5 @@ def is_unique(example_string):
         if character in example_string[index:]:
             return False
         index += 1
+        
     return True
