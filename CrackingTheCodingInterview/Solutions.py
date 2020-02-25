@@ -30,3 +30,63 @@ def check_permutation(first_string, last_string):
 
 def urlify(input):
     return input.strip().replace(' ','%20')
+
+# Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palin­ drome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
+# EXAMPLE
+# Input: Tact Coa
+# Output: True (permutations: "taco cat", "atco eta", etc.)
+
+
+def palindrome_permutation(input):
+    def is_palindrome(input_string):
+        input_string = input_string.lower().strip().replace(' ','')
+        str_len = len(input_string)
+
+        for index in range(str_len):
+            if(input_string[index] != input_string[str_len - (index+1)]):
+                return False
+
+        return True
+    # To do: Develop an an algorithm that uses the function
+
+
+# An algorithm for balancing Parentheses in an expression
+# Balanced {}()[{}] , [({})], ({[]})
+# Unbalanced [({)}], ({[}), ()}[]
+
+def is_balanced(expression):
+    tokens = [['{','}'],['[',']'],['(',')']]
+    expression_length = len(expression)
+    stack = []
+
+    if expression_length % 2 != 0:
+        return False
+
+    def get_opening_token_index(token):
+        closing_tokens = ['}',']',')']
+        index = 0
+
+        if token in closing_tokens:
+            for item in closing_tokens:
+                if token == item:
+                    return index
+                index +=1
+
+        return None
+
+    stack.append(expression[0])
+
+    for token in expression:
+        opening_token_index = get_opening_token_index(token)
+
+        if(opening_token_index != None):
+            expected_token = stack.pop()
+
+            if tokens[opening_token_index][0] != expected_token:
+                return False
+        else:
+            stack.append(token)
+
+    return True
+
+print(balanced)
