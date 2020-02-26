@@ -93,7 +93,7 @@ def is_balanced(expression):
 
     return True
 
-### Queue Data structure
+# Queue Data structure
 
 
 class Queue:
@@ -111,3 +111,27 @@ class Queue:
 
     def peek(self):
         return self.items[len(self.items) - 1]
+
+# Stack Data structure
+class Stack:
+    def __init__(self):
+        self .items = []
+    
+    def __str__(self):
+        return str(self.items)
+    
+    def push(self,item):
+        self.items.append(item)
+    
+    def pop(self):
+        return self.items.pop()
+    
+    def top(self):
+        return self.items[len(self.items) - 1]
+    
+    def is_empty(self):
+        return self.size() == 0
+    
+    def size(self):
+        return len(self.items)
+        
