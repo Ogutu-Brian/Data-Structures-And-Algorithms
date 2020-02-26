@@ -92,3 +92,22 @@ def is_balanced(expression):
             stack.append(token)
 
     return True
+
+### Queue Data structure
+
+
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def __str__(self):
+        return str(self.items)
+
+    def enqueue(self, item):
+        self.items.insert(0, item)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def peek(self):
+        return self.items[len(self.items) - 1]
