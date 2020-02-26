@@ -1,6 +1,7 @@
 # Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 # Hints: #44, #777, #732
 
+
 def is_unique(example_string):
     example_string = example_string.lower()
     index = 1
@@ -14,6 +15,8 @@ def is_unique(example_string):
 
 # Check Permutation: Given two strings,write a method to decide if one is a permutation of the
 # other.
+
+
 def check_permutation(first_string, last_string):
     first_char_list = list(first_string.lower())
     last_char_list = list(last_string.lower())
@@ -28,8 +31,9 @@ def check_permutation(first_string, last_string):
 # Input: "Mr John Smith "
 # Output: "Mr%20John%20Smith"
 
+
 def urlify(input):
-    return input.strip().replace(' ','%20')
+    return input.strip().replace(' ', '%20')
 
 # Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palin­ drome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
 # EXAMPLE
@@ -39,7 +43,7 @@ def urlify(input):
 
 def palindrome_permutation(input):
     def is_palindrome(input_string):
-        input_string = input_string.lower().strip().replace(' ','')
+        input_string = input_string.lower().strip().replace(' ', '')
         str_len = len(input_string)
 
         for index in range(str_len):
@@ -55,7 +59,7 @@ def palindrome_permutation(input):
 # Unbalanced [({)}], ({[}), ()}[]
 
 def is_balanced(expression):
-    tokens = [['{','}'],['[',']'],['(',')']]
+    tokens = [['{', '}'], ['[', ']'], ['(', ')']]
     expression_length = len(expression)
     stack = []
 
@@ -63,14 +67,14 @@ def is_balanced(expression):
         return False
 
     def get_opening_token_index(token):
-        closing_tokens = ['}',']',')']
+        closing_tokens = ['}', ']', ')']
         index = 0
 
         if token in closing_tokens:
             for item in closing_tokens:
                 if token == item:
                     return index
-                index +=1
+                index += 1
 
         return None
 
@@ -88,5 +92,3 @@ def is_balanced(expression):
             stack.append(token)
 
     return True
-
-print(balanced)
