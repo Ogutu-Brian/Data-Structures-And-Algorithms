@@ -245,10 +245,30 @@ class DoublyLinkedList:
             
             current_node = current_node.next
     
-    def delete_at_index(self,value):
-        pass
-    
-    def delete_by_value(self,index):
+    def delete_at_index(self,index):
+        if index not in range(self.size):
+            return
+        
+        if index == 0:
+            current_node = self.root
+            self.root = current_node.next
+            self.root.previous = None
+            self.size -= 1
+            return
+        
+        current_node = self.root.next
+        
+        for i in range(self.size):
+            if index == i:
+                previous_node = current_node.previous
+                previous_node.next = current_node.next
+                previous_node.next.previous = previous_node
+                self.size -= 1
+                return
+                
+        current_node = current_node.next
+        
+    def delete_by_value(self,value):
         pass
     
 linked_list = DoublyLinkedList(0)
@@ -260,4 +280,6 @@ linked_list.insert_at_index(4,45)
 linked_list.pre_pend(10)
 linked_list.pre_pend(30)
 linked_list.append(100)
+linked_list.print_linked_list()
+linked_list.delete_at_index(1)
 linked_list.print_linked_list()
