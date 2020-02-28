@@ -260,16 +260,46 @@ class DoublyLinkedList:
         
         for i in range(self.size):
             if index == i:
-                previous_node = current_node.previous
-                previous_node.next = current_node.next
-                previous_node.next.previous = previous_node
+                self.delete_node(current_node)
                 self.size -= 1
                 return
                 
         current_node = current_node.next
+    
+    def delete_node(self,node):
+        previous_node = node.previous
+        next_node = node.next
+        previous_node.next = next_node
+        previous_node.next.previous = previous_node
+    
+    def search_from_root(self,node,value):
+        if node.value == value:
+            return node.value
         
+        if not node.next:
+            return
+        return self.search_from_root(node.next,value)
+    
+    def search(self,value):
+        return self.search_from_root(self.root,value)
+    
+    def deletion_by_value(self,node,value):
+        if value == node.value:
+            previous_node = node.previous
+            next_node = node.next
+            if node.previous:
+                previous_node.next = next_node
+            previous_node.next.previous = previous_node
+        
+        if not node.next:
+            return
+        
+        return self.deletion_by_value(node.next,value)
+    
     def delete_by_value(self,value):
-        pass
+        return self.deletion_by_value(self.root,value)
+        
+        
     
 linked_list = DoublyLinkedList(0)
 linked_list.insert_at_index(0,2)
@@ -282,4 +312,7 @@ linked_list.pre_pend(30)
 linked_list.append(100)
 linked_list.print_linked_list()
 linked_list.delete_at_index(1)
+linked_list.print_linked_list()
+linked_list.delete_by_value(10)
+print(linked_list.search(10))
 linked_list.print_linked_list()
