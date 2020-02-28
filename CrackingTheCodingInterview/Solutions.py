@@ -171,3 +171,93 @@ class QueueFromTwoStacks:
                 self.oldest_stack.push(self.newest_stack.pop())
 
 # Detecting cycles in a linked list
+
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.previous = None
+        self.next = None
+
+
+class DoublyLinkedList:
+    def __init__(self, value=None):
+        self.root = Node(value)
+        self.size = 1
+
+    def insert_at_index(self, index, value):
+        if self.size - 1 < index:
+            return
+
+        node = Node(value)
+        
+        if index == 0:
+            next_node = self.root
+            self.root = node
+            self.root.next = next_node
+            self.root.next.previous = self.root
+            self.size += 1
+        else:
+            current_node = self.root.next
+            
+            for i in range(1, index+1):
+                if i == index:
+                    previous_node = current_node.previous
+                    next_node = current_node.next
+                    previous_node.next = node
+                    previous_node.next.next = current_node
+                    current_node.previous = previous_node.next.next
+                    self.size = self.size + 1
+                    return 
+                
+                current_node = current_node.next
+                
+    def print_linked_list(self):
+        linked_list = []
+        current_node = self.root
+        
+        while True:
+            linked_list.append('{}->'.format(current_node.value))
+
+            if not current_node.next:
+                break
+            current_node = current_node.next
+        
+        print((' ').join(linked_list))
+    
+    def pre_pend(self,value):
+        root_node = self.root
+        node = Node(value)
+        self.root = node
+        self.root.next = root_node
+        self.root.next.previous = self.root
+        self.size += 1
+    
+    def append(self,value):
+        current_node = self.root
+
+        while True:
+            if not current_node.next:
+                current_node.next = Node(value)
+                current_node.next.previous = current_node
+                self.size += 1
+                return
+            
+            current_node = current_node.next
+    
+    def delete_at_index(self,value):
+        pass
+    
+    def delete_by_value(self,index):
+        pass
+    
+linked_list = DoublyLinkedList(0)
+linked_list.insert_at_index(0,2)
+linked_list.insert_at_index(0,3)
+linked_list.insert_at_index(0,4)
+linked_list.insert_at_index(2,6)
+linked_list.insert_at_index(4,45)
+linked_list.pre_pend(10)
+linked_list.pre_pend(30)
+linked_list.append(100)
+linked_list.print_linked_list()
