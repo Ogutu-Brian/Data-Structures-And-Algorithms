@@ -185,7 +185,7 @@ class DoublyLinkedList:
         self.root = Node(value)
         self.size = 1
 
-    def insert_at_index(self, index: N, value):
+    def insert_at_index(self, index, value):
         if self.size - 1 < index:
             return
 
@@ -297,26 +297,53 @@ class DoublyLinkedList:
         return self.deletion_by_value(node.next, value)
 
     def delete_by_value(self, value):
+        self.size -= 1
         return self.deletion_by_value(self.root, value)
 
+    def introduce_cycle(self):
+        current_node = self.root
+        last_node = None
 
-# Detecting cycles in a linked lis
-def has_cycles(linked_list: DoublyLinkedList):
-    pass
+        while True:
+            if not current_node.next:
+                current_node.next = self.root
+                self.root.previous = current_node
+                return
+
+            current_node = current_node.next
 
 
-linked_list = DoublyLinkedList(0)
-linked_list.insert_at_index(0, 2)
-linked_list.insert_at_index(0, 3)
-linked_list.insert_at_index(0, 4)
-linked_list.insert_at_index(2, 6)
-linked_list.insert_at_index(4, 45)
-linked_list.pre_pend(10)
-linked_list.pre_pend(30)
-linked_list.append(100)
-linked_list.print_linked_list()
-linked_list.delete_at_index(1)
-linked_list.print_linked_list()
-linked_list.delete_by_value(10)
-print(linked_list.search(10))
-linked_list.print_linked_list()
+    # Detecting cycles in a linked list
+    def has_cycles(self):
+        current_node = self.root
+        fast = current_node.next
+        slow = current_node
+
+        while fast.next and slow.next:
+            if not current_node.next:
+                return False
+
+            if fast == slow:
+                return True
+            fast = fast.next.next
+            slow = slow.next
+
+        return False
+    
+# linked_list = DoublyLinkedList(0)
+# linked_list.insert_at_index(0, 2)
+# linked_list.insert_at_index(0, 3)
+# linked_list.insert_at_index(0, 4)
+# linked_list.insert_at_index(2, 6)
+# linked_list.insert_at_index(4, 45)
+# linked_list.pre_pend(10)
+# linked_list.pre_pend(30)
+# linked_list.append(100)
+# linked_list.print_linked_list()
+# linked_list.delete_at_index(1)
+# linked_list.print_linked_list()
+# linked_list.delete_by_value(10)
+# print(linked_list.search(10))
+# linked_list.print_linked_list()
+# linked_list.introduce_cycle()
+# print(linked_list.has_cycles())
