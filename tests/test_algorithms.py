@@ -5,7 +5,8 @@ from sample_algorithms.algorithms import (
     fibunacci,
     sieve_of_eratosthenese,
     is_prime,
-    consucetive_integer_checking_algorithm
+    consucetive_integer_checking_algorithm,
+    bubble_sort
 )
 from primitive_types.primitives import PrimitiveTypes
 
@@ -218,3 +219,17 @@ class TestsForPrimeNumbers(unittest.TestCase):
 
     def test_for_two(self):
         self.assertEqual(False, is_prime(1))
+
+
+class TestSortingAlgorithms(unittest.TestCase):
+    def test_bubble_sort_for_length_1(self):
+        self.assertEqual([2], bubble_sort([2]))
+
+    def test_for_sorted_two_values(self):
+        self.assertEqual([1, 2], bubble_sort([1, 2]))
+
+    def test_for_unsorted_two_values(self):
+        self.assertEqual([1, 2], bubble_sort([2, 1]))
+
+    def test_for_unsorted_list(self):
+        self.assertEqual([1, 2, 4, 5, 8], bubble_sort([5, 1, 4, 2, 8]))
