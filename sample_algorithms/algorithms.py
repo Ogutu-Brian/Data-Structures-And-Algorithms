@@ -118,3 +118,14 @@ def bubble_sort(values):
         has_swaps = contains_swaps
 
     return values
+
+
+def selection_sort(items):
+    sorted_items = []
+
+    while len(items) > 0:
+        min_element = min(items)
+        sorted_items.append(min_element)
+        items.remove(min_element)
+
+    return sorted_items

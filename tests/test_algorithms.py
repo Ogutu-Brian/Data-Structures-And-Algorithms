@@ -1,13 +1,6 @@
 import unittest
-from sample_algorithms.algorithms import (
-    insertion_sort,
-    euclideanAlgorithm,
-    fibunacci,
-    sieve_of_eratosthenese,
-    is_prime,
-    consucetive_integer_checking_algorithm,
-    bubble_sort
-)
+from sample_algorithms.algorithms import (insertion_sort, euclideanAlgorithm, fibunacci, sieve_of_eratosthenese,
+                                          is_prime, consucetive_integer_checking_algorithm, bubble_sort, selection_sort, selection_sort)
 from primitive_types.primitives import PrimitiveTypes
 
 
@@ -233,3 +226,15 @@ class TestSortingAlgorithms(unittest.TestCase):
 
     def test_for_unsorted_list(self):
         self.assertEqual([1, 2, 4, 5, 8], bubble_sort([5, 1, 4, 2, 8]))
+
+
+class SelectionSort(unittest.TestCase):
+    def test_selection_sort_for_one(self):
+        self.assertEqual([1], selection_sort([1]))
+
+    def test_selection_sort_for_empty_array(self):
+        self.assertEqual([], selection_sort([]))
+
+    def test_selection_sort_for_large_array(self):
+        self.assertEqual(selection_sort(
+            [64, 25, 12, 22, 11]), [11, 12, 22, 25, 64])
