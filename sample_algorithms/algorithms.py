@@ -62,7 +62,7 @@ def is_prime(number):
 
 def sieve_of_eratosthenese(limit):
     boundary = int(sqrt(limit))
-    list_content = range(limit+1)
+    list_content = list(range(limit+1))
 
     for i in range(2, boundary + 1):
         if list_content[i] != 0:
