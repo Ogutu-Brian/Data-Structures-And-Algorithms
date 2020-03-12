@@ -197,7 +197,7 @@ class TestsFibunacci(unittest.TestCase):
 class TestsForSieveOfEratosthenes(unittest.TestCase):
     def test_for_first_25(self):
         self.assertEqual(sieve_of_eratosthenese(
-            25, [2, 3, 5, 7, 11, 13, 17, 19, 23]))
+            25), [2, 3, 5, 7, 11, 13, 17, 19, 23])
 
 
 class TestsForPrimeNumbers(unittest.TestCase):
