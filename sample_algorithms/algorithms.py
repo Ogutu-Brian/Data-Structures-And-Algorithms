@@ -73,3 +73,16 @@ def sieve_of_eratosthenese(limit):
                 j += i
 
     return [x for x in list_content if x >= 2]
+
+
+def fibunacci(value):
+    def fib(n, memo):
+        if n == 0 or n == 1:
+            return n
+
+        if not memo.get(n):
+            memo[n] = fib(n-1, memo) + fib(n-2, memo)
+
+        return memo.get(n)
+
+    return fib(value, {})
