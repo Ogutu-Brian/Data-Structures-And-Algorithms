@@ -2,6 +2,9 @@ import unittest
 from sample_algorithms.algorithms import (
     insertion_sort,
     euclideanAlgorithm,
+    fibunacci,
+    sieve_of_eratosthenese,
+    is_prime,
     consucetive_integer_checking_algorithm
 )
 from primitive_types.primitives import PrimitiveTypes
@@ -12,7 +15,7 @@ class TestInsertionSort(unittest.TestCase):
     Class that tests insertion sort instances
     """
 
-    def test_sorted_list(self) -> None:
+    def test_sorted_list(self):
         """Tests for the sorting of an already sorted list"""
         sorted_list = [1, 2, 3, 4]
         insertion_sort(sorted_list)
@@ -21,7 +24,7 @@ class TestInsertionSort(unittest.TestCase):
             [1, 2, 3, 4]
         )
 
-    def test_unsorted_list(self) -> None:
+    def test_unsorted_list(self):
         """
         Tests for sorting of unsorted list
         """
@@ -32,7 +35,7 @@ class TestInsertionSort(unittest.TestCase):
             [1, 2, 6, 13, 32, 56]
         )
 
-    def test_sorted_revsersed_list(self) -> None:
+    def test_sorted_revsersed_list(self):
         """
         Tests for a sorted list but in reverse order
         """
@@ -46,10 +49,10 @@ class TestInsertionSort(unittest.TestCase):
         )
         self.assertEqual(
             list_2,
-            [1,2,3,4,5,6]
+            [1, 2, 3, 4, 5, 6]
         )
 
-    def test_negative_values(self) -> None:
+    def test_negative_values(self):
         """
         Tests for the negative values
         """
@@ -60,7 +63,7 @@ class TestInsertionSort(unittest.TestCase):
             [-10, -2, -1, -0.893]
         )
 
-    def test_mix_sorted_unsorted_list(self) -> None:
+    def test_mix_sorted_unsorted_list(self):
         """
         Tests for a mix of unsorted and sorted list
         """
@@ -77,7 +80,7 @@ class TestEuclideanAlgorithm(unittest.TestCase):
     Tests Euclidean Algorithm
     """
 
-    def test_euclidean_algorithm(self) -> None:
+    def test_euclidean_algorithm(self):
         """
         Tests euclidean algorithm in descending order
         """
@@ -89,7 +92,7 @@ class TestEuclideanAlgorithm(unittest.TestCase):
             actual_result
         )
 
-    def test_eculid_reversed(self) -> None:
+    def test_eculid_reversed(self):
         """
         Tests euclodean algorithm with values inserted in reversed order
         """
@@ -101,7 +104,7 @@ class TestEuclideanAlgorithm(unittest.TestCase):
             actual_result
         )
 
-    def test_ecuclid_with_zero(self) -> None:
+    def test_ecuclid_with_zero(self):
         """
         Tests euclidean algorithm with a zero
         """
@@ -122,7 +125,7 @@ class TestConsecutiveIntegerCheckingAlgorithm(unittest.TestCase):
     Tests consucutive checking algorithm to find the gcd of numbers
     """
 
-    def test_consucutive_integer_checking_algorithm(self) -> None:
+    def test_consucutive_integer_checking_algorithm(self):
         """
         Tests consucutive checking algorithm in descending order
         """
@@ -134,7 +137,7 @@ class TestConsecutiveIntegerCheckingAlgorithm(unittest.TestCase):
             actual_result
         )
 
-    def test_consucutive_integer_checking_algorithm_reversed(self) -> None:
+    def test_consucutive_integer_checking_algorithm_reversed(self):
         """
         Tests consucutive chekcing algorithm in reversed order
         """
@@ -146,7 +149,7 @@ class TestConsecutiveIntegerCheckingAlgorithm(unittest.TestCase):
             actual_result
         )
 
-    def test_consucutive_integer_checking_algorithm_with_zero(self) -> None:
+    def test_consucutive_integer_checking_algorithm_with_zero(self):
         """
         Tests consucutive algorithm  with a zero
         """
@@ -167,10 +170,51 @@ class TestPrimitiveTypes(unittest.TestCase):
     Tests primitive types
     """
 
-    def test_count_num_bits(self) -> None:
+    def test_count_num_bits(self):
         """
         Tests for the number of bits in a number
         """
         number = 12
         expected_bits = 4
         self.assertEqual(expected_bits, PrimitiveTypes.count_num_bits(number))
+
+
+class TestsFibunacci(unittest.TestCase):
+    """
+    tests for fibunacci using dynamic programming
+    """
+
+    def test_for_zerp(self):
+        self.assertEqual(0, fibunacci(0))
+
+    def test_for_one(self):
+        self.assertEqual(1, fibunacci(1))
+
+    def test_for_seventh(self):
+        self.assertEqual(13, fibunacci(7))
+
+
+class TestsForSieveOfEratosthenes(unittest.TestCase):
+    def test_for_first_25(self):
+        self.assertEqual([2, 3, 5, 7, 11, 13, 17, 19, 23],
+                         sieve_of_eratosthenese(25))
+
+
+class TestsForPrimeNumbers(unittest.TestCase):
+    def test_for_non_prime(self):
+        self.assertEqual(False, is_prime(10))
+
+    def test_for_prime(self):
+        self.assertEqual(True, is_prime(5))
+
+    def test_for_large_non_prime(self):
+        self.assertEqual(False, is_prime(1240))
+
+    def test_for_large_prime(self):
+        self.assertEqual(True, is_prime(419))
+
+    def test_for_zero(self):
+        self.assertEqual(False, is_prime(0))
+
+    def test_for_two(self):
+        self.assertEqual(False, is_prime(1))
