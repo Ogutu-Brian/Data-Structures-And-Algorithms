@@ -35,13 +35,14 @@ def check_permutation(first_string, last_string):
 def urlify(input):
     return input.strip().replace(' ', '%20')
 
+
 def is_palindrome(input_string):
     def is_valid(character):
         return character.isalpha()
-    
+
     input_string = input_string.lower()
     str_len = len(input_string)
-    
+
     for index in range(str_len):
         backward_index = str_len - (index + 1)
         if (input_string[index] != input_string[backward_index]) or not is_valid(input_string[index]) or not is_valid(input_string[backward_index]):
@@ -55,22 +56,24 @@ def is_palindrome(input_string):
 # Input: Tact Coa
 # Output: True (permutations: "taco cat", "atco eta", etc.)
 
+
 def palindrome_permutation(data):
     data = list(data.lower())
     container = []
-    
+
     for item in data:
         if item.isalpha():
             if item in container:
                 container.remove(item)
             else:
                 container.append(item)
-    
+
     return len(container) <= 1
 
 # An algorithm for balancing Parentheses in an expression
 # Balanced {}()[{}] , [({})], ({[]})
 # Unbalanced [({)}], ({[}), ()}[]
+
 
 def is_balanced(expression):
     tokens = [['{', '}'], ['[', ']'], ['(', ')']]

@@ -86,3 +86,35 @@ def fibunacci(value):
         return memo.get(n)
 
     return fib(value, {})
+
+
+def bubble_sort(values):
+    values_length = len(values)
+
+    if values_length <= 2:
+        if values_length == 1:
+            return values
+
+        if values[0] > values[1]:
+            return [values[1], values[0]]
+        return values
+
+    has_swaps = True
+
+    while has_swaps:
+        contains_swaps = False
+        count = 1
+
+        for i in range(values_length):
+            if i + 1 == values_length:
+                break
+
+            if values[i] > values[i+1]:
+                contains_swaps = True
+                temp = values[i]
+                values[i] = values[i+1]
+                values[i+1] = temp
+
+        has_swaps = contains_swaps
+
+    return values
