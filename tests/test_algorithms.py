@@ -3,6 +3,8 @@ from sample_algorithms.algorithms import (
     insertion_sort,
     euclideanAlgorithm,
     fibunacci,
+    sieve_of_eratosthenese,
+    is_prime,
     consucetive_integer_checking_algorithm
 )
 from primitive_types.primitives import PrimitiveTypes
@@ -177,7 +179,7 @@ class TestPrimitiveTypes(unittest.TestCase):
         self.assertEqual(expected_bits, PrimitiveTypes.count_num_bits(number))
 
 
-class TestFibunacci(unittest.TestCase):
+class TestsFibunacci(unittest.TestCase):
     """
     tests for fibunacci using dynamic programming
     """
@@ -190,3 +192,27 @@ class TestFibunacci(unittest.TestCase):
 
     def test_for_seventh(self):
         self.assertEqual(13, fibunacci(7))
+
+
+class TestsForSieveOfEratosthenes(unittest.TestCase):
+    pass
+
+
+class TestsForPrimeNumbers(unittest.TestCase):
+    def test_for_non_prime(self):
+        self.assertEqual(False, is_prime(10))
+
+    def test_for_prime(self):
+        self.assertEqual(True, is_prime(5))
+
+    def test_for_large_non_prime(self):
+        self.assertEqual(False, is_prime(1240))
+
+    def test_for_large_prime(self):
+        self.assertEqual(True, is_prime(419))
+
+    def test_for_zero(self):
+        self.assertEqual(False, is_prime(0))
+
+    def test_for_two(self):
+        self.assertEqual(False, is_prime(1))
