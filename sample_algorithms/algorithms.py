@@ -1,11 +1,12 @@
 """
 Sample Basic Algorithms
 """
-from typing import List
+from math import sqrt
 
 
-def insertion_sort(input_array: List) -> List:
+def insertion_sort(input_array):
     j = 1
+
     while j <= (len(input_array)-1):
         key = input_array[j]
         i = j - 1
@@ -20,7 +21,7 @@ def insertion_sort(input_array: List) -> List:
     return input_array
 
 
-def euclideanAlgorithm(m: int, n: int):
+def euclideanAlgorithm(m, n):
     """
     Ecuclidean algorithm for finding the gcd of two numbers
     """
@@ -31,7 +32,7 @@ def euclideanAlgorithm(m: int, n: int):
         return euclideanAlgorithm(n, remainder)
 
 
-def consucetive_integer_checking_algorithm(m: int, n: int) -> int:
+def consucetive_integer_checking_algorithm(m, n):
     """
     Using consucutive integer checking algorithm for gcd of two numbers
     """
@@ -44,3 +45,31 @@ def consucetive_integer_checking_algorithm(m: int, n: int) -> int:
         result = t
 
     return result
+
+
+def is_prime(number):
+    if number < 2:
+        return False
+
+    boundary = int(sqrt(number))
+
+    for i in range(2, boundary + 1):
+        if number % i == 0:
+            return False
+
+    return True
+
+
+def sieve_of_eratosthenese(limit):
+    boundary = int(sqrt(limit))
+    list_content = range(limit+1)
+
+    for i in range(2, boundary + 1):
+        if list_content[i] != 0:
+            j = i**2
+
+            while j <= limit:
+                list_content[j] = 0
+                j += i
+
+    return [x for x in list_content if x >= 2]
