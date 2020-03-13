@@ -2,7 +2,7 @@ import unittest
 from sample_algorithms.algorithms import (
     insertion_sort, euclideanAlgorithm, fibunacci, sieve_of_eratosthenese,
     is_prime, consucetive_integer_checking_algorithm, bubble_sort, selection_sort,
-    selection_sort, merge_sort, quick_sort
+    selection_sort, merge_sort, quick_sort, binary_search
 )
 from primitive_types.primitives import PrimitiveTypes
 
@@ -287,3 +287,15 @@ class TestQuickSort(unittest.TestCase):
 
     def test_for_sorted_list(self):
         self.assertEqual([1, 2, 3, 4, 5, 6], quick_sort([1, 2, 3, 4, 5, 6]))
+
+
+class TestBinarySearch(unittest.TestCase):
+    def test_for_empty_list(self):
+        self.assertEqual(None, binary_search([], 30))
+
+    def test_for_searching_for_single_array(self):
+        self.assertEqual(30, binary_search([30], 30))
+
+    def test_in_large_array(self):
+        self.assertEqual(56, binary_search(
+            [2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 56))

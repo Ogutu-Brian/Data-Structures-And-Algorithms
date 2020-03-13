@@ -191,3 +191,27 @@ def quick_sort(items):
         cumulative.extend(right)
 
     return cumulative
+
+
+def binary_search(items, item):
+    if len(items) == 0:
+        return None
+
+    if len(items) == 1:
+        if items[0] == item:
+            return item
+        else:
+            return None
+
+    mid = int(len(items)/2)
+
+    if items[mid] == item:
+        return item
+
+    if items[mid] < item:
+        return binary_search(items[mid+1:], item)
+
+    return binary_search(items[0:mid], item)
+
+
+print(binary_search([2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 163))
