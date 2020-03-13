@@ -1,6 +1,8 @@
 import unittest
-from sample_algorithms.algorithms import (insertion_sort, euclideanAlgorithm, fibunacci, sieve_of_eratosthenese,
-                                          is_prime, consucetive_integer_checking_algorithm, bubble_sort, selection_sort, selection_sort)
+from sample_algorithms.algorithms import (
+    insertion_sort, euclideanAlgorithm, fibunacci, sieve_of_eratosthenese,
+    is_prime, consucetive_integer_checking_algorithm, bubble_sort, selection_sort, selection_sort, merge_sort
+)
 from primitive_types.primitives import PrimitiveTypes
 
 
@@ -215,6 +217,9 @@ class TestsForPrimeNumbers(unittest.TestCase):
 
 
 class TestSortingAlgorithms(unittest.TestCase):
+    def test_for_empty_list(self):
+        self.assertEqual([], bubble_sort([]))
+
     def test_bubble_sort_for_length_1(self):
         self.assertEqual([2], bubble_sort([2]))
 
@@ -228,7 +233,7 @@ class TestSortingAlgorithms(unittest.TestCase):
         self.assertEqual([1, 2, 4, 5, 8], bubble_sort([5, 1, 4, 2, 8]))
 
 
-class SelectionSort(unittest.TestCase):
+class SelectionSortTest(unittest.TestCase):
     def test_selection_sort_for_one(self):
         self.assertEqual([1], selection_sort([1]))
 
@@ -238,3 +243,28 @@ class SelectionSort(unittest.TestCase):
     def test_selection_sort_for_large_array(self):
         self.assertEqual(selection_sort(
             [64, 25, 12, 22, 11]), [11, 12, 22, 25, 64])
+
+    def test_for_unsorted_two_values(self):
+        self.assertEqual([1, 2], selection_sort([2, 1]))
+
+    def test_for_sorted_list(self):
+        self.assertEqual([1, 2, 3, 4, 5, 6],
+                         selection_sort([1, 2, 3, 4, 5, 6]))
+
+
+class MergeSortTest(unittest.TestCase):
+    def test_selection_sort_for_one(self):
+        self.assertEqual([1], merge_sort([1]))
+
+    def test_selection_sort_for_empty_array(self):
+        self.assertEqual([], merge_sort([]))
+
+    def test_selection_sort_for_large_array(self):
+        self.assertEqual(merge_sort([64, 25, 12, 22, 11]), [
+                         11, 12, 22, 25, 64])
+
+    def test_for_unsorted_two_values(self):
+        self.assertEqual([1, 2], merge_sort([2, 1]))
+
+    def test_for_sorted_list(self):
+        self.assertEqual([1, 2, 3, 4, 5, 6], merge_sort([1, 2, 3, 4, 5, 6]))

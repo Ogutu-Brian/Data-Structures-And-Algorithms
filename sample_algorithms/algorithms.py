@@ -92,6 +92,9 @@ def bubble_sort(values):
     values_length = len(values)
 
     if values_length <= 2:
+        if values_length == 0:
+            return values
+
         if values_length == 1:
             return values
 
@@ -129,3 +132,37 @@ def selection_sort(items):
         items.remove(min_element)
 
     return sorted_items
+
+
+def merge_sort(items):
+    def merge(left_items, right_items):
+        copy_array = []
+
+        while len(left_items) or len(right_items):
+            if len(left_items) and len(right_items):
+                if left_items[0] > right_items[0]:
+                    value = right_items[0]
+                    copy_array.append(value)
+                    right_items.remove(value)
+                else:
+                    value = left_items[0]
+                    copy_array.append(value)
+                    left_items.remove(value)
+            else:
+                if not len(left_items):
+                    copy_array.extend(right_items)
+                    right_items.clear()
+                else:
+                    copy_array.extend(left_items)
+                    left_items.clear()
+
+        return copy_array
+
+    if len(items) <= 1:
+        return items
+
+    mid = int(len(items)/2)
+    left = merge_sort(items[0:mid])
+    right = merge_sort(items[mid:])
+
+    return merge(left, right)
