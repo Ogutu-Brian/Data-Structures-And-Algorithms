@@ -156,8 +156,6 @@ def merge_sort(items):
                     copy_array.extend(left_items)
                     return copy_array
 
-        return copy_array
-
     if len(items) <= 1:
         return items
 
