@@ -151,10 +151,10 @@ def merge_sort(items):
             else:
                 if not len(left_items):
                     copy_array.extend(right_items)
-                    right_items.clear()
+                    return copy_array
                 else:
                     copy_array.extend(left_items)
-                    left_items.clear()
+                    return copy_array
 
         return copy_array
 
