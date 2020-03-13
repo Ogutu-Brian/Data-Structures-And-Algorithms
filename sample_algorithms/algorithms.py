@@ -166,3 +166,30 @@ def merge_sort(items):
     right = merge_sort(items[mid:])
 
     return merge(left, right)
+
+
+def quick_sort(items):
+    items_length = len(items)
+
+    if items_length <= 1:
+        return items
+
+    if items_length == 2:
+        return [items[0], items[1]] if items[0] < items[1] else [items[1], items[0]]
+
+    pivot = items[items_length-1]
+    exact = [x for x in items if x == pivot]
+    left = quick_sort([x for x in items if x < pivot])
+    right = quick_sort([x for x in items if x > pivot])
+
+    cumulative = []
+
+    if left:
+        cumulative.extend(left)
+
+    cumulative.extend(exact)
+
+    if right:
+        cumulative.extend(right)
+
+    return cumulative

@@ -1,7 +1,8 @@
 import unittest
 from sample_algorithms.algorithms import (
     insertion_sort, euclideanAlgorithm, fibunacci, sieve_of_eratosthenese,
-    is_prime, consucetive_integer_checking_algorithm, bubble_sort, selection_sort, selection_sort, merge_sort
+    is_prime, consucetive_integer_checking_algorithm, bubble_sort, selection_sort,
+    selection_sort, merge_sort, quick_sort
 )
 from primitive_types.primitives import PrimitiveTypes
 
@@ -216,7 +217,7 @@ class TestsForPrimeNumbers(unittest.TestCase):
         self.assertEqual(False, is_prime(1))
 
 
-class TestSortingAlgorithms(unittest.TestCase):
+class TestBubbleSort(unittest.TestCase):
     def test_for_empty_list(self):
         self.assertEqual([], bubble_sort([]))
 
@@ -233,7 +234,7 @@ class TestSortingAlgorithms(unittest.TestCase):
         self.assertEqual([1, 2, 4, 5, 8], bubble_sort([5, 1, 4, 2, 8]))
 
 
-class SelectionSortTest(unittest.TestCase):
+class TestSelectionSort(unittest.TestCase):
     def test_selection_sort_for_one(self):
         self.assertEqual([1], selection_sort([1]))
 
@@ -252,7 +253,7 @@ class SelectionSortTest(unittest.TestCase):
                          selection_sort([1, 2, 3, 4, 5, 6]))
 
 
-class MergeSortTest(unittest.TestCase):
+class TestMergeSort(unittest.TestCase):
     def test_selection_sort_for_one(self):
         self.assertEqual([1], merge_sort([1]))
 
@@ -268,3 +269,21 @@ class MergeSortTest(unittest.TestCase):
 
     def test_for_sorted_list(self):
         self.assertEqual([1, 2, 3, 4, 5, 6], merge_sort([1, 2, 3, 4, 5, 6]))
+
+
+class TestQuickSort(unittest.TestCase):
+    def test_selection_sort_for_one(self):
+        self.assertEqual([1], quick_sort([1]))
+
+    def test_selection_sort_for_empty_array(self):
+        self.assertEqual([], quick_sort([]))
+
+    def test_selection_sort_for_large_array(self):
+        self.assertEqual(quick_sort([64, 25, 12, 22, 11]), [
+                         11, 12, 22, 25, 64])
+
+    def test_for_unsorted_two_values(self):
+        self.assertEqual([1, 2], quick_sort([2, 1]))
+
+    def test_for_sorted_list(self):
+        self.assertEqual([1, 2, 3, 4, 5, 6], quick_sort([1, 2, 3, 4, 5, 6]))
