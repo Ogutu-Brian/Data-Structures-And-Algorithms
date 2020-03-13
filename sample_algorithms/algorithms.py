@@ -212,6 +212,3 @@ def binary_search(items, item):
         return binary_search(items[mid+1:], item)
 
     return binary_search(items[0:mid], item)
-
-
-print(binary_search([2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 163))
