@@ -299,3 +299,6 @@ class TestBinarySearch(unittest.TestCase):
     def test_in_large_array(self):
         self.assertEqual(56, binary_search(
             [2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 56))
+
+    def test_for_single_array_with_no_item(self):
+        self.assertEqual(None, binary_search([30], 90))
