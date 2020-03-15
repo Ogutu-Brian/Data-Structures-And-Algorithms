@@ -132,3 +132,35 @@ def max_sub_array(nums):
         best = max(best, total)
 
     return best
+
+# You are given an array of intervals - that is, an array of tuples (start, end).
+# The array may not be sorted, and could contain overlapping intervals.
+# Return another array where the overlapping intervals are merged.
+
+# For example:
+# [(1, 3), (5, 8), (4,10), (20, 25)]
+
+# This input should return
+# [(1, 3), (4, 10), (20, 25)]
+# since (5, 8) and (4, 10) can be merged into (4, 10).
+
+
+def array_interval(array):
+    def merges(item, value):
+        return item[0] <= value[0] and item[1] >= value[1]
+
+    sorted_array = sorted(array, key=lambda x: x[0])
+    filtered_array = sorted_array[:]
+
+    item = sorted_array[0]
+
+    for i in range(1, len(sorted_array)):
+        if merges(item, sorted_array[i]):
+            filtered_array.remove(sorted_array[i])
+        elif merges(sorted_array[i], item):
+            filtered_array.remove(item)
+            item = sorted_array[i]
+        else:
+            item = sorted_array[i]
+
+    return filtered_array
