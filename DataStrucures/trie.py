@@ -69,11 +69,32 @@ class Trie:
 
   def is_valid_word(self, word):
     return self.search(word=word.lower(), root=self.root, index=0)
+  
+  def delete(self, word, root, index = 0):
+    if not root.value:
+      return 
+    
+    if root.value != word[index]:
+      return
+    
+    if index == len(word) - 1 :
+      if root.is_last:
+        root.is_last = False
+      
+      return
+     
+    node = root.children.get(word[index + 1])
+       
+    return self.delete(word=word, root=node, index = index + 1) if node else None
+  
+  def delete_word(self, word):
+    return self.delete(word=word.lower(), root=self.root, index = 0)
 
 trie = Trie()
 trie.add_value('Brian')
 trie.add_value('Bruno')
 trie.add_value('Bria')
+trie.delete_word('Bruno')
 print(trie.is_valid_word('BrUno'))
 print(trie.is_valid_word('Bria'))
 print(trie.is_valid_word('ian'))
