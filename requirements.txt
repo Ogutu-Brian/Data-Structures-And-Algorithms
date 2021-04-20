@@ -13,7 +13,7 @@ pickleshare==0.7.5
 pluggy==0.8.1
 prompt-toolkit==3.0.3
 ptyprocess==0.6.0
-py==1.7.0
+py==1.10.0
 Pygments==2.5.2
 pytest==4.2.0
 six==1.12.0
